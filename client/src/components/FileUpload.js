@@ -1,7 +1,8 @@
+// @ts-check
 import React, { Fragment, useState } from 'react';
 import Message from './Message';
 import Progress from './Progress';
-import Player from './Player';
+// import Player from './Player';
 import axios from 'axios';
 
 const FileUpload = () => {
@@ -40,7 +41,7 @@ const FileUpload = () => {
   
         const { fileName, filePath } = res.data;
   
-        setUploadedFile({ fileName, filePath });
+        setUploadedFile({ fileName, filePath }[]);
 
         setMessage('File Uploaded');
   
@@ -62,7 +63,7 @@ const FileUpload = () => {
               type='file'
               className='custom-file-input'
               id='customFile'
-              onChange={onChange}
+              onChange={onChange} multiple
             />
             <label className='custom-file-label' htmlFor='customFile'>
               {filename}
@@ -78,7 +79,12 @@ const FileUpload = () => {
           />
         </form>
         {uploadedFile && (
-            <Player files={uploadedFile} />
+            <div className='row mt-5'>
+                <div className='col-md-6 m-auto'>
+                    <h3 className='text-center'>{uploadedFile.fileName}</h3>
+                    <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
+                </div>
+            </div>
         )}
       </Fragment>
     );
