@@ -40,8 +40,8 @@ const FileUpload = () => {
   
         const { fileName, filePath } = res.data;
   
-        setUploadedFile( () => {
-            return uploadedFile.push("1");
+        setUploadedFile( (uploadedFile) => {
+            return setUploadedFile.push(uploadedFile);
         });
 
         setMessage('File Uploaded');
