@@ -1,4 +1,3 @@
-// @ts-check
 import React, { Fragment, useState } from 'react';
 import Message from './Message';
 import Progress from './Progress';
@@ -6,9 +5,9 @@ import Progress from './Progress';
 import axios from 'axios';
 
 const FileUpload = () => {
-    const [file, setFile] = useState('');
+    const [file, setFile] = useState([]);
     const [filename, setFilename] = useState('Choose File');
-    const [uploadedFile, setUploadedFile] = useState({});
+    const [uploadedFile, setUploadedFile] = useState([{}]);
     const [message, setMessage] = useState('');
     const [uploadPercentage, setUploadPercentage] = useState(0);
   
@@ -41,7 +40,9 @@ const FileUpload = () => {
   
         const { fileName, filePath } = res.data;
   
-        setUploadedFile({ fileName, filePath }[]);
+        setUploadedFile( () => {
+            return uploadedFile.push("1");
+        });
 
         setMessage('File Uploaded');
   
