@@ -12,6 +12,8 @@ const FileUpload = () => {
     const [uploadPercentage, setUploadPercentage] = useState(0);
 
     const fileList = [];
+    const totalList = [];
+
   
     const onChange = e => {
       setFile(e.target.files[0]);
@@ -44,7 +46,7 @@ const FileUpload = () => {
   
         setUploadedFile( (uploadedFile) => {
             const fileList = [...uploadedFile];
-            return fileList.push(uploadedFile);
+            return totalList = fileList.push(uploadedFile);
         });
 
         setMessage('File Uploaded');
