@@ -80,9 +80,11 @@ const FileUpload = () => {
             className='btn btn-primary btn-block mt-4'
           />
         </form>
-        files.map((item) => {
+        {uploadedFiles.map((item) => {
 
-        <Player files = {uploadedFiles}/>
+            <Player file = {item}/>
+
+        })};
       </Fragment>
     );
   };

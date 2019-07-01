@@ -11,7 +11,7 @@ const Player = ({ file }) => {
 };
 
 Player.propTypes = {
-  file: PropTypes.array.isRequired
+  file: PropTypes.object.isRequired
 };
 
 export default Player;
