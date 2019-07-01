@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Player = ({ files }) => {
-  return files.map((item) => {
     return(
-    <div key={item.filePath}>
-        <h3>{item.fileName}</h3>
-        <audio controls src={item.filePath}></audio>
+    <div key={filePath}>
+        <h3>{fileName}</h3>
+        <audio controls src={filePath}></audio>
     </div>
     );
-  });
 };
 
 Player.propTypes = {
