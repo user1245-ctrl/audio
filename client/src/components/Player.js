@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 const Player = ({ files }) => {
   return files.map((item) => {
     return(
-    <div className={'player' + item} key={item}>
-        <audio controls src={item.filePath} key={item}></audio>
+    <div key={item.filePath}>
+        <h3>{item.fileName}</h3>
+        <audio controls src={item.filePath}></audio>
     </div>
     );
   });
