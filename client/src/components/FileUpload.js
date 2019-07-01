@@ -55,7 +55,6 @@ const FileUpload = () => {
         }
     }
 };
-
     return (
       <Fragment>
         {message && <Message msg={message} />}
@@ -77,7 +76,7 @@ const FileUpload = () => {
           <input
             type='submit'
             value='Upload'
-            className='btn btn-primary btn-block mt-4'
+            className='btn btn-primary btn-block mt-4 mb-4'
           />
         </form>
         {uploadedFiles.map((item) => {

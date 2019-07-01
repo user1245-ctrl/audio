@@ -6,14 +6,16 @@ import "react-jinke-music-player/assets/index.css";
 const Player = ({ file }) => {
     return(
     <div key={file.filePath}>
-        <ReactJkMusicPlayer style = {{position: "static"}} audioLists = {[{name: file.fileName, musicSrc: file.filePath}]} 
+        <ReactJkMusicPlayer audioLists = {[{name: file.fileName, musicSrc: file.filePath}]} 
         mode = {"full"} 
         autoPlay = {false} 
         drag = {false} 
         showPlay = {false}
         showDownload = {false}
         showPlayMode = {false}
-        toggleMode = {false} />
+        showThemeSwitch = {false}
+        toggleMode = {false}
+        remove = {false} />
     </div>
     );
 };
