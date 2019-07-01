@@ -46,7 +46,7 @@ const FileUpload = () => {
   
         setUploadedFile( (uploadedFile) => {
             const fileList = [...uploadedFile];
-            return totalList = fileList.push(uploadedFile);
+            return fileList = fileList.push(uploadedFile);
         });
 
         setMessage('File Uploaded');
