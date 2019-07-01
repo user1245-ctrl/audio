@@ -45,8 +45,7 @@ const FileUpload = () => {
         const { fileName, filePath } = res.data;
   
         setUploadedFile( (uploadedFile) => {
-            const fileList = [...uploadedFile];
-            return fileList = fileList.push(uploadedFile);
+            return fileList = [...uploadedFile, { fileName, filePath }];
         });
 
         setMessage('File Uploaded');
