@@ -5,11 +5,13 @@ import Progress from './Progress';
 import axios from 'axios';
 
 const FileUpload = () => {
-    const [file, setFile] = useState([]);
+    const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Choose File');
     const [uploadedFile, setUploadedFile] = useState([{}]);
     const [message, setMessage] = useState('');
     const [uploadPercentage, setUploadPercentage] = useState(0);
+
+    const fileList = [];
   
     const onChange = e => {
       setFile(e.target.files[0]);
@@ -41,7 +43,8 @@ const FileUpload = () => {
         const { fileName, filePath } = res.data;
   
         setUploadedFile( (uploadedFile) => {
-            return setUploadedFile.push(uploadedFile);
+            const fileList = [...uploadedFile];
+            fileList.push(uploadedFile);
         });
 
         setMessage('File Uploaded');
