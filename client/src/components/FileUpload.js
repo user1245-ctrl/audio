@@ -82,7 +82,7 @@ const FileUpload = () => {
         </form>
         {uploadedFiles.map((item) => {
 
-            <Player file = {item}/>
+            return <Player file = {item} key = {item.filePath} />
 
         })};
       </Fragment>
