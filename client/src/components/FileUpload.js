@@ -1,18 +1,15 @@
 import React, { Fragment, useState } from 'react';
 import Message from './Message';
 import Progress from './Progress';
-// import Player from './Player';
+import Player from './Player';
 import axios from 'axios';
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Choose File');
-    const [uploadedFile, setUploadedFile] = useState([]);
+    const [uploadedFiles, setUploadedFiles] = useState([]);
     const [message, setMessage] = useState('');
     const [uploadPercentage, setUploadPercentage] = useState(0);
-
-    const fileList = [];
-    const totalList = [];
 
   
     const onChange = e => {
@@ -44,8 +41,8 @@ const FileUpload = () => {
   
         const { fileName, filePath } = res.data;
   
-        setUploadedFile( (uploadedFile) => {
-            return [...uploadedFile, { fileName, filePath }];
+        setUploadedFiles( (uploadedFiles) => {
+            return [...uploadedFiles, { fileName, filePath }];
         });
 
         setMessage('File Uploaded');
@@ -83,14 +80,7 @@ const FileUpload = () => {
             className='btn btn-primary btn-block mt-4'
           />
         </form>
-        {uploadedFile && (
-            <div className='row mt-5'>
-                <div className='col-md-6 m-auto'>
-                    <h3 className='text-center'>{uploadedFile.fileName}</h3>
-                    <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
-                </div>
-            </div>
-        )}
+        <Player files = {uploadedFiles}/>
       </Fragment>
     );
   };
