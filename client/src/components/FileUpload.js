@@ -45,20 +45,20 @@ const FileUpload = () => {
         const { fileName, filePath } = res.data;
   
         setUploadedFile( (uploadedFile) => {
-            return fileList = [...uploadedFile, { fileName, filePath }];
+            return [...uploadedFile, { fileName, filePath }];
         });
 
         setMessage('File Uploaded');
-  
+        
       } catch (err) {
-        if (err.response.status === 500) {
-          setMessage('There was a problem with the server');
-        } else {
-          setMessage(err.response.data.msg);
+          if (err.response.status === 500) {
+              setMessage('There was a problem with the server');
+            } else {
+                setMessage(err.response.data.msg);
         }
-      }
-    };
-  
+    }
+};
+
     return (
       <Fragment>
         {message && <Message msg={message} />}
