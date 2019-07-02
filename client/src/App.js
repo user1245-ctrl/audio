@@ -2,7 +2,7 @@ import React from 'react';
 import FileUpload from './components/FileUpload';
 import './App.css';
 
-const App = ({onUploadFile}) => (
+const App = ({onUploadFile}) => {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
@@ -12,6 +12,6 @@ const App = ({onUploadFile}) => (
     </h4>
     <FileUpload />
   </div>
-);
+};
 
 export default App;
