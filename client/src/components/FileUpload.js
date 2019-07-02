@@ -1,9 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import Message from './Message';
 import Progress from './Progress';
-import Player from './Player';
+// import Player from './Player';
 import PlayButton from './PlayButton';
 import axios from 'axios';
+import ReactJkMusicPlayer from "react-jinke-music-player";
+import "react-jinke-music-player/assets/index.css";
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
@@ -11,7 +13,8 @@ const FileUpload = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [message, setMessage] = useState('');
     const [uploadPercentage, setUploadPercentage] = useState(0);
-
+    const [play, setPlay] = useState('');
+    const ref = useRef();
   
     const onChange = e => {
       setFile(e.target.files[0]);
@@ -22,6 +25,10 @@ const FileUpload = () => {
       e.preventDefault();
       const formData = new FormData();
       formData.append('file', file);
+
+    const handlePlay = () => {
+        setPlay(!ref.current.state)
+    }
   
       try {
         const res = await axios.post('/upload', formData, {
@@ -64,7 +71,7 @@ const FileUpload = () => {
                     type='file'
                     className='custom-file-input'
                     id='customFile'
-                    onChange={onChange} multiple
+                    onChange={onChange}
                     />
                     <label className='custom-file-label' htmlFor='customFile'>
                     {filename}
@@ -81,10 +88,27 @@ const FileUpload = () => {
                 </form>
             </div>
         </div>
-        <PlayButton />
+        <div className = "d-flex justify-content-center mb-4">
+            <PlayButton ref = {ref} onPlay = {handlePlay} />
+        </div>
         {uploadedFiles.map((item) => {
 
-            return <Player file = {item} key = {item.filePath} />
+            // return <Player file = {item} key = {item.filePath} />
+            return(
+            <div key={item.filePath}>
+                <ReactJkMusicPlayer audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
+                mode = {"full"} 
+                autoPlay = {false} 
+                drag = {false} 
+                showPlay = {false}
+                showDownload = {false}
+                showPlayMode = {false}
+                showThemeSwitch = {false}
+                toggleMode = {false}
+                remove = {false}
+                paused = {false} />
+            </div>
+            )
 
         })}
       </Fragment>

@@ -1,25 +1,25 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import Play from './Play';
 import Pause from './Pause';
 
-const PlayButton = () => {
+const PlayButton = ({onPlay}) => {
 
 
     const [playing, setPlaying] = useState(false);
 
+    const handlePlayClick = () => {
+    if (!playing) {
+        setPlaying(true);
 
-const handlePlayerClick = () => {
-  if (!playing) {
-    setPlaying(true);
-  } else {
-    setPlaying(false);
+    } else {
+        setPlaying(false);
 
-  }
-}
+    }
+    }
 
     return (
-      <div className="player" style = {{width: "50px"}} >
-        {playing? <Pause onPlayerClick={handlePlayerClick} /> : <Play onPlayerClick={handlePlayerClick} />}
+      <div className="player" style = {{width: "50px"}} onClick = {onPlay} >
+        {playing? <Pause onPlayClick={handlePlayClick} /> : <Play onPlayClick={handlePlayClick} />}
       </div>
     )
 
