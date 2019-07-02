@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import FileUpload from './components/FileUpload';
-import Play from './Play';
-import Pause from './Pause';
+import Play from './components/Play';
+import Pause from './components/Pause';
 import './App.css';
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
@@ -25,8 +25,10 @@ const App = () => {
           Audio Player
         </h4>
         <FileUpload onFileUpload = {handleUpload} />
-        <Play />
-        <Pause />
+        <div className = "d-flex justify-content-center mb-4">
+          <Play />
+          <Pause />
+        </div>
         {uploadedFiles.map((item) => {
 
           return(
@@ -43,7 +45,9 @@ const App = () => {
               remove = {false} />
             </div>
           )
+
         })}
+
       </div>
     </Fragment>
   )

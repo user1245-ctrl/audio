@@ -84,7 +84,6 @@ const FileUpload = ({onFileUpload}) => {
             </div>
         </div>
 
-        })}
       </Fragment>
     );
   };
