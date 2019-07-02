@@ -9,7 +9,7 @@ import axios from 'axios';
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 
-const FileUpload = ({onUploadedFile}) => {
+const FileUpload = ({onFileUpload}) => {
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Choose File');
     const [message, setMessage] = useState('');
@@ -41,7 +41,7 @@ const FileUpload = ({onUploadedFile}) => {
 
             const { fileName, filePath } = res.data;
 
-            onUploadedFile({ fileName, filePath });
+            onFileUpload({ fileName, filePath });
 
     
             // setUploadedFiles( (uploadedFiles) => {

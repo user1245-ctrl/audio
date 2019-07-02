@@ -10,7 +10,7 @@ const App = () => {
     return [...uploadedFiles, { fileName, filePath }];
   });
 
-  const handleUpload = (onfileUpload) => {
+  const handleUpload = (onFileUpload) => {
     
   }
 
