@@ -9,8 +9,8 @@ const Player = ({ file }) => {
     const ref = useRef();
 
     const volumeChange = e => {
-        setVolume(e/100);
-        ref.current.volume = volume;
+        ref.current.volume = e/100;
+        setVolume(ref.current.volume);
     };
 
     return(
