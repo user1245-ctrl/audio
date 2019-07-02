@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Message from './Message';
 import Progress from './Progress';
 import Player from './Player';
+import PlayButton from './PlayButton';
 import axios from 'axios';
 
 const FileUpload = () => {
@@ -33,9 +34,6 @@ const FileUpload = () => {
                 Math.round((progressEvent.loaded * 100) / progressEvent.total)
               )
             );
-  
-            // Clear percentage
-            setTimeout(() => setUploadPercentage(0), 10000);
           }
         });
   
@@ -57,33 +55,38 @@ const FileUpload = () => {
 };
     return (
       <Fragment>
-        {message && <Message msg={message} />}
-        <form onSubmit={onSubmit}>
-          <div className='custom-file mb-4'>
-            <input
-              type='file'
-              className='custom-file-input'
-              id='customFile'
-              onChange={onChange} multiple
-            />
-            <label className='custom-file-label' htmlFor='customFile'>
-              {filename}
-            </label>
-          </div>
+        <div className = "interface-container d-flex justify-content-center"> 
+            <div className = "interface"> 
+                {message && <Message msg={message} />}
+                <form onSubmit={onSubmit}>
+                <div className='custom-file mb-4'>
+                    <input
+                    type='file'
+                    className='custom-file-input'
+                    id='customFile'
+                    onChange={onChange} multiple
+                    />
+                    <label className='custom-file-label' htmlFor='customFile'>
+                    {filename}
+                    </label>
+                </div>
 
-          <Progress percentage={uploadPercentage} />
-  
-          <input
-            type='submit'
-            value='Upload'
-            className='btn btn-primary btn-block mt-4 mb-4'
-          />
-        </form>
+                <Progress percentage={uploadPercentage} />
+        
+                <input
+                    type='submit'
+                    value='Upload'
+                    className='btn btn-primary btn-block mt-4 mb-4'
+                />
+                </form>
+            </div>
+        </div>
+        <PlayButton />
         {uploadedFiles.map((item) => {
 
             return <Player file = {item} key = {item.filePath} />
 
-        })};
+        })}
       </Fragment>
     );
   };
