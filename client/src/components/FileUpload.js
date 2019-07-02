@@ -32,6 +32,11 @@ const FileUpload = () => {
     const handlePlay = () => {
         setPlay(!ref.current.state)
     }
+
+    const handlePause = () => {
+        setPlay(!ref.current.state)
+    }
+    
   
       try {
         const res = await axios.post('/upload', formData, {
@@ -92,8 +97,8 @@ const FileUpload = () => {
             </div>
         </div>
         <div className = "d-flex justify-content-center mb-4">
-                <Play ref = {refPlay} />
-                <Pause ref = {refPause} />
+                <Play ref = {refPlay} onPlay = {handlePlay} />
+                <Pause ref = {refPause} onPause = {handlePause} />
         </div>
         {uploadedFiles.map((item) => {
 
