@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactJkMusicPlayer from "react-jinke-music-player";
-import "react-jinke-music-player/assets/index.css";
+import Slider from 'rc-slider/lib/Slider';
+import 'rc-slider/assets/index.css';
 
 const Player = ({ file }) => {
+
+    const [volume, setVolume] = useState('');
+
+    const volumeChange = e => {
+        setVolume(e.target.);
+    };
+
     return(
     <div key={file.filePath}>
-        <ReactJkMusicPlayer audioLists = {[{name: file.fileName, musicSrc: file.filePath}]} 
-        mode = {"full"} 
-        autoPlay = {false} 
-        drag = {false} 
-        showPlay = {false}
-        showDownload = {false}
-        showPlayMode = {false}
-        showThemeSwitch = {false}
-        toggleMode = {false}
-        remove = {false} />
+        <h3>{file.fileName}</h3>
+        <audio controls src={file.filePath}></audio>
+        <Slider defaultValue = {50} onChange = {volumeChange} />
     </div>
     );
 };
