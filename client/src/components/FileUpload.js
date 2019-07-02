@@ -38,11 +38,6 @@ const FileUpload = ({onFileUpload}) => {
 
             onFileUpload({ fileName, filePath });
 
-    
-            // setUploadedFiles( (uploadedFiles) => {
-            //     return [...uploadedFiles, { fileName, filePath }];
-            // });
-
             setMessage('File Uploaded');
             
         } catch (err) {

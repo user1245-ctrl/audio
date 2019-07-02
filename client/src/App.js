@@ -9,6 +9,7 @@ import "react-jinke-music-player/assets/index.css";
 const App = () => {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
 
 
 
@@ -26,7 +27,7 @@ const App = () => {
         </h4>
         <FileUpload onFileUpload = {handleUpload} />
         <div className = "d-flex justify-content-center mb-4">
-          <Play />
+          <Play onClick = {} />
           <Pause />
         </div>
         {uploadedFiles.map((item) => {
