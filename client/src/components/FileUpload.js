@@ -25,8 +25,6 @@ const FileUpload = ({onUploadedFile}) => {
       const formData = new FormData();
       formData.append('file', file);
   
-    useEffect(() => {
-
         try {
             const res = await axios.post('/upload', formData, {
             headers: {
@@ -41,9 +39,9 @@ const FileUpload = ({onUploadedFile}) => {
             }
             });
     
-            setUploadedFiles( (uploadedFiles) => {
-                return [...uploadedFiles, { fileName, filePath }];
-            });
+            // setUploadedFiles( (uploadedFiles) => {
+            //     return [...uploadedFiles, { fileName, filePath }];
+            // });
 
             setMessage('File Uploaded');
             
@@ -54,8 +52,9 @@ const FileUpload = ({onUploadedFile}) => {
                     setMessage(err.response.data.msg);
             }
         }
-    });
-    
+    };
+
+
     return (
       <Fragment>
         <div className = "interface-container d-flex justify-content-center"> 
