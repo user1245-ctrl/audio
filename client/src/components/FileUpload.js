@@ -12,12 +12,8 @@ import "react-jinke-music-player/assets/index.css";
 const FileUpload = ({onUploadedFile}) => {
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Choose File');
-    // const [uploadedFiles, setUploadedFiles] = useState([]);
     const [message, setMessage] = useState('');
     const [uploadPercentage, setUploadPercentage] = useState(0);
-    const [play, setPlay] = useState('');
-    const refPlay = useRef();
-    const refPause = useRef();
   
     const onChange = e => {
       setFile(e.target.files[0]);
@@ -28,15 +24,6 @@ const FileUpload = ({onUploadedFile}) => {
       e.preventDefault();
       const formData = new FormData();
       formData.append('file', file);
-
-    const handlePlay = () => {
-        setPlay(!ref.current.state)
-    }
-
-    const handlePause = () => {
-        setPlay(!ref.current.state)
-    }
-    
   
     useEffect(() => {
 
@@ -97,27 +84,15 @@ const FileUpload = ({onUploadedFile}) => {
                 </form>
             </div>
         </div>
-        <div className = "d-flex justify-content-center mb-4">
-                <Play ref = {refPlay} onPlay = {handlePlay} />
-                <Pause ref = {refPause} onPause = {handlePause} />
-        </div>
+        {/* <div className = "d-flex justify-content-center mb-4"> */}
+                {/* <Play ref = {refPlay} onPlay = {handlePlay} /> */}
+                {/* <Pause ref = {refPause} onPause = {handlePause} /> */}
+        {/* </div> */}
         {uploadedFiles.map((item) => {
 
             // return <Player file = {item} key = {item.filePath} />
             return(
-            <div key={item.filePath}>
-                <ReactJkMusicPlayer audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
-                mode = {"full"} 
-                autoPlay = {false} 
-                drag = {false} 
-                showPlay = {false}
-                showDownload = {false}
-                showPlayMode = {false}
-                showThemeSwitch = {false}
-                toggleMode = {false}
-                remove = {false}
-                paused = {false} />
-            </div>
+                <Player />
             )
 
         })}
