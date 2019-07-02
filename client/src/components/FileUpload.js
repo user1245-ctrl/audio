@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import Message from './Message';
 import Progress from './Progress';
 import Play from './Play';
@@ -38,33 +38,36 @@ const FileUpload = ({onUploadedFile}) => {
     }
     
   
-      try {
-        const res = await axios.post('/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-          onUploadProgress: progressEvent => {
-            setUploadPercentage(
-              parseInt(
-                Math.round((progressEvent.loaded * 100) / progressEvent.total)
-              )
-            );
-          }
-        });
-  
-        setUploadedFiles( (uploadedFiles) => {
-            return [...uploadedFiles, { fileName, filePath }];
-        });
+    useEffect(() => {
 
-        setMessage('File Uploaded');
-        
-      } catch (err) {
-          if (err.response.status === 500) {
-              setMessage('There was a problem with the server');
-            } else {
-                setMessage(err.response.data.msg);
+        try {
+            const res = await axios.post('/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            onUploadProgress: progressEvent => {
+                setUploadPercentage(
+                parseInt(
+                    Math.round((progressEvent.loaded * 100) / progressEvent.total)
+                )
+                );
+            }
+            });
+    
+            setUploadedFiles( (uploadedFiles) => {
+                return [...uploadedFiles, { fileName, filePath }];
+            });
+
+            setMessage('File Uploaded');
+            
+        } catch (err) {
+            if (err.response.status === 500) {
+                setMessage('There was a problem with the server');
+                } else {
+                    setMessage(err.response.data.msg);
+            }
         }
-    }
+    });
 };
     return (
       <Fragment>
