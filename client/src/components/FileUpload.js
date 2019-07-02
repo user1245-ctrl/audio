@@ -1,13 +1,8 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react';
 import Message from './Message';
 import Progress from './Progress';
-import Play from './Play';
-import Pause from './Pause';
-// import Player from './Player';
-// import PlayButton from './PlayButton';
 import axios from 'axios';
-import ReactJkMusicPlayer from "react-jinke-music-player";
-import "react-jinke-music-player/assets/index.css";
+
 
 const FileUpload = ({onFileUpload}) => {
     const [file, setFile] = useState('');
