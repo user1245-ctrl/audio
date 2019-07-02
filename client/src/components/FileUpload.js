@@ -55,7 +55,7 @@ const FileUpload = ({onUploadedFile}) => {
             }
         }
     });
-};
+    
     return (
       <Fragment>
         <div className = "interface-container d-flex justify-content-center"> 
