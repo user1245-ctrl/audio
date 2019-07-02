@@ -88,13 +88,7 @@ const FileUpload = ({onUploadedFile}) => {
                 </form>
             </div>
         </div>
-        {/* <div className = "d-flex justify-content-center mb-4"> */}
-                {/* <Play ref = {refPlay} onPlay = {handlePlay} /> */}
-                {/* <Pause ref = {refPause} onPause = {handlePause} /> */}
-        {/* </div> */}
-        {uploadedFiles.map((item) => {
-
-            // return <Player file = {item} key = {item.filePath} />
+        
             return(
                 <div>
                 </div>
