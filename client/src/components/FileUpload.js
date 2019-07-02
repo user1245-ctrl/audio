@@ -38,6 +38,11 @@ const FileUpload = ({onUploadedFile}) => {
                 );
             }
             });
+
+            const { fileName, filePath } = res.data;
+
+            onUploadedFile({ fileName, filePath });
+
     
             // setUploadedFiles( (uploadedFiles) => {
             //     return [...uploadedFiles, { fileName, filePath }];
