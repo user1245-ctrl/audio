@@ -6,6 +6,10 @@ const App = () => {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
+  setUploadedFiles( (uploadedFiles) => {
+    return [...uploadedFiles, { fileName, filePath }];
+  });
+
   const handleUpload = () => {
     
   }
