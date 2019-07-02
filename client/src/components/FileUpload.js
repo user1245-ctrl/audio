@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useRef } from 'react';
 import Message from './Message';
 import Progress from './Progress';
+import Play from './Play';
+import Pause from './Pause';
 // import Player from './Player';
-import PlayButton from './PlayButton';
+// import PlayButton from './PlayButton';
 import axios from 'axios';
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
@@ -10,11 +12,12 @@ import "react-jinke-music-player/assets/index.css";
 const FileUpload = () => {
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Choose File');
-    const [uploadedFiles, setUploadedFiles] = useState([]);
+    // const [uploadedFiles, setUploadedFiles] = useState([]);
     const [message, setMessage] = useState('');
     const [uploadPercentage, setUploadPercentage] = useState(0);
     const [play, setPlay] = useState('');
-    const ref = useRef();
+    const refPlay = useRef();
+    const refPause = useRef();
   
     const onChange = e => {
       setFile(e.target.files[0]);
@@ -89,7 +92,8 @@ const FileUpload = () => {
             </div>
         </div>
         <div className = "d-flex justify-content-center mb-4">
-            <PlayButton ref = {ref} onPlay = {handlePlay} />
+                <Play ref = {refPlay} />
+                <Pause ref = {refPause} />
         </div>
         {uploadedFiles.map((item) => {
 
