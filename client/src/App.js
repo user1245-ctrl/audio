@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import FileUpload from './components/FileUpload';
 import Play from './components/Play';
 import Pause from './components/Pause';
@@ -10,6 +10,7 @@ const App = () => {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  ref = useRef();
 
 
 
@@ -17,6 +18,16 @@ const App = () => {
     setUploadedFiles( (uploadedFiles) => {
       return [...uploadedFiles, newFile];
     });
+  }
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+    ref.current.audio.play()
+  }
+
+  const handlePause = () => {
+    setIsPlaying(false);
+    ref.current.audio.pause()
   }
 
   return(
@@ -27,14 +38,14 @@ const App = () => {
         </h4>
         <FileUpload onFileUpload = {handleUpload} />
         <div className = "d-flex justify-content-center mb-4">
-          <Play onClick = {} />
-          <Pause />
+          <Play onClick = {handlePlay} />
+          <Pause onClick = {handlePause} />
         </div>
         {uploadedFiles.map((item) => {
 
           return(
             <div key={item.filePath}>
-              <ReactJkMusicPlayer audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
+              <ReactJkMusicPlayer ref = {ref} audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
               mode = {"full"} 
               autoPlay = {false} 
               drag = {false} 
