@@ -88,11 +88,6 @@ const FileUpload = ({onUploadedFile}) => {
                 </form>
             </div>
         </div>
-        
-            return(
-                <div>
-                </div>
-            )
 
         })}
       </Fragment>
