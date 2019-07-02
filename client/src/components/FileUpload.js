@@ -96,7 +96,8 @@ const FileUpload = ({onUploadedFile}) => {
 
             // return <Player file = {item} key = {item.filePath} />
             return(
-                <Player />
+                <div>
+                </div>
             )
 
         })}
