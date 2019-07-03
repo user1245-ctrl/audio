@@ -22,9 +22,15 @@ const App = () => {
 
   const handlePlay = () => {
     console.log("play");
-    console.log(ref.current.audio)
+    console.log(ref.current.audio.play)
+    const players = document.querySelector(".music-player-audio");
+    console.log(players);
+    players.play();
+    // players.forEach(element => {
+      // element.play();
+    // });
     // setIsPlaying(true);
-    ref.current.audio.play();
+    // ref.current.audio.play();
   }
 
   const handlePause = () => {
