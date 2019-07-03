@@ -3,7 +3,7 @@
 }
 
 .react-jinke-music-player-mobile {
-  height: auto;
+  height: auto!important;
   background-color: #403f3f;
   border-bottom: solid #272727 2px;
 }

@@ -10,7 +10,7 @@ const App = () => {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
-  ref = useRef();
+  const ref = useRef();
 
 
 
