@@ -20,18 +20,12 @@ const App = () => {
   }
 
   const handlePlay = () => {
-    console.log("play");
-    console.log(refCollection.current);
-    // refCollection.current.forEach(ref => {
-    //   console.log("boucle");
-    //   console.log(ref);
-    //   ref.audio.play();
-    // });
-    // change
+    refCollection.current.forEach(ref => {
+      ref.audio.play();
+    });
   }
 
   const handlePause = () => {
-    // ref.current.audio.pause();
     refCollection.current.forEach(ref => {
       ref.audio.pause();
     });
@@ -52,7 +46,7 @@ const App = () => {
 
           return(
             <div key={item.filePath}>
-              <ReactJkMusicPlayer ref = {(player) => refCollection.current[i]} audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
+              <ReactJkMusicPlayer ref = {(player) => refCollection.current[i] = player} audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
               mode = {"full"} 
               autoPlay = {false} 
               drag = {false} 
