@@ -10,7 +10,7 @@ const App = () => {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
   // const [isPlaying, setIsPlaying] = useState(false);
-  const refCollection = useRef(uploadedFiles.map(() => createRef()));
+  const refCollection = useRef([]);
 
   const handleUpload = (newFile) => {
     setUploadedFiles( (uploadedFiles) => {
@@ -19,7 +19,11 @@ const App = () => {
   }
 
   const handlePlay = () => {
+    console.log("play");
+    console.log(refCollection.current);
     refCollection.current.forEach(ref => {
+      console.log("boucle");
+      console.log(ref);
       ref.audio.play();
     });
   }
@@ -46,7 +50,7 @@ const App = () => {
 
           return(
             <div key={item.filePath}>
-              <ReactJkMusicPlayer ref = {refCollection.current[i]} audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
+              <ReactJkMusicPlayer useEffect(() => {refCollection.current = uploadedFiles.map(item)}, [uploadedFiles]) ref = {refCollection.current[i]} audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
               mode = {"full"} 
               autoPlay = {false} 
               drag = {false} 
