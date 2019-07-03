@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState, useRef, createRef } from 'react';
 import FileUpload from './components/FileUpload';
 import Play from './components/Play';
 import Pause from './components/Pause';
@@ -10,9 +10,7 @@ const App = () => {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
   // const [isPlaying, setIsPlaying] = useState(false);
-  const ref = useRef();
-
-
+  const refCollection = useRef(uploadedFiles.map(() => createRef()));
 
   const handleUpload = (newFile) => {
     setUploadedFiles( (uploadedFiles) => {
@@ -21,11 +19,16 @@ const App = () => {
   }
 
   const handlePlay = () => {
-    ref.current.audio.play();
+    refCollection.current.forEach(ref => {
+      ref.audio.play();
+    });
   }
 
   const handlePause = () => {
-    ref.current.audio.pause();
+    // ref.current.audio.pause();
+    refCollection.current.forEach(ref => {
+      ref.audio.pause();
+    });
   }
 
   return(
@@ -39,11 +42,11 @@ const App = () => {
           <Play onPlay = {handlePlay} />
           <Pause onPause = {handlePause} />
         </div>
-        {uploadedFiles.map((item) => {
+        {uploadedFiles.map((item, i) => {
 
           return(
             <div key={item.filePath}>
-              <ReactJkMusicPlayer ref = {ref} audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
+              <ReactJkMusicPlayer ref = {refCollection.current[i]} audioLists = {[{name: item.fileName, musicSrc: item.filePath}]} 
               mode = {"full"} 
               autoPlay = {false} 
               drag = {false} 
