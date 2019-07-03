@@ -21,22 +21,10 @@ const App = () => {
   }
 
   const handlePlay = () => {
-    console.log("play");
-    console.log(ref.current.audio.play)
-    const players = document.querySelector(".music-player-audio");
-    console.log(players);
-    players.play();
-    // players.forEach(element => {
-      // element.play();
-    // });
-    // setIsPlaying(true);
-    // ref.current.audio.play();
+    ref.current.audio.play();
   }
 
   const handlePause = () => {
-    console.log("pause");
-    console.log(ref.current.audio)
-    // setIsPlaying(false);
     ref.current.audio.pause();
   }
 
@@ -49,7 +37,7 @@ const App = () => {
         <FileUpload onFileUpload = {handleUpload} />
         <div className = "d-flex justify-content-center mb-4">
           <Play onPlay = {handlePlay} />
-          <Pause onClick = {handlePause} />
+          <Pause onPause = {handlePause} />
         </div>
         {uploadedFiles.map((item) => {
 
